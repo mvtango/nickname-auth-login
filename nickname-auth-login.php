@@ -1,9 +1,9 @@
 <?php
 /*
- * Plugin Name: nickname-login
+ * Plugin Name: Nickname Auth Login
  * Version: 1.1
- * Plugin URI: https://github.com/mvtango/nickname-login
- * Description: This is your starter template for your next WordPress plugin.
+ * Plugin URI: https://github.com/mvtango/nickname-auth-login
+ * Description: Try to authenticate using wordpress nickname + password. Prevents duplicate nicknames from being created.
  * Author: Martin Virtel
  * Author URI: https://twitter.com/mvtango
  * Requires at least: 4.0
