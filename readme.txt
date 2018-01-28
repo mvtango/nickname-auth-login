@@ -31,8 +31,12 @@ select count(*) as count, group_concat(wp_users.user_login), group_concat(wp_use
 
 == Installation ==
 
-Installing "nickname-login" can be done by downloading the .zip file and uploading it through 
-the 'Plugins > Add New > Upload' screen in your WordPress dashboard. Then activate the plugin through the 'Plugins' menu in WordPress.
+Installing the plugin can be done by downloading the .zip file from here:
+
+https://github.com/mvtango/nickname-auth-login/archive/master.zip
+
+... and uploading it through the 'Plugins > Add New > Upload' screen in your WordPress dashboard. 
+Then activate the plugin through the 'Plugins' menu in WordPress.
 
 
 = 1.1 =
