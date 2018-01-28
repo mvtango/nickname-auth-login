@@ -30,7 +30,16 @@ Use this SQL query to list the users with duplicate nicknames:
 
 ```sql
 
-select count(*) as count, group_concat(wp_users.user_login), group_concat(wp_users.ID), meta_value from wp_usermeta, wp_users where meta_key="nickname" and wp_usermeta.user_id=wp_users.ID group by meta_value having count>1;
+select 
+    count(*) as count, 
+    group_concat(wp_users.user_login), 
+    group_concat(wp_users.ID), meta_value 
+from wp_usermeta, wp_users 
+where 
+    meta_key="nickname" 
+   and wp_usermeta.user_id=wp_users.ID 
+group by meta_value 
+having count>1;
 
 ```
 
