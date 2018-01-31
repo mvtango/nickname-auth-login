@@ -23,10 +23,28 @@ if ( ! defined( 'ABSPATH' ) ) exit;
 
 function authenticate_nickname_password($user,$username,$password) {
 
+
+
+
  global $wpdb;
 
  /* find id for nickname $username */
  /* https://wordpress.stackexchange.com/a/124966/135725 */
+  
+
+
+/*
+ if (( $user instanceof WP_User ) or ($user instanceof WP_Error)) {
+        error_log("\$user object is already there");
+        return $user;
+    }
+
+*/
+  if (( $user instanceof WP_User )) {
+        error_log("\$user already authenticated");
+        return $user;
+    }
+error_log("Nickname authentication attempt with " . $username . " and password and \$user='" . print_r($user,true). "'");
 
  $query = $wpdb->get_results("SELECT * FROM $wpdb->users as users, $wpdb->usermeta as meta WHERE users.ID = meta.user_id AND meta.meta_key = 'nickname' and meta.meta_value = '" . esc_sql( $username ) . "'");
 
@@ -43,10 +61,26 @@ function authenticate_nickname_password($user,$username,$password) {
 
  /* https://developer.wordpress.org/reference/functions/wp_authenticate_username_password/ */
 
- if ( ! wp_check_password( $password, $user->user_pass, $user->ID ) ) {
-    error_log("Password check for user " . $user->login . " failed");
+$user = apply_filters( 'wp_authenticate_user', $user, $password );
+
+
+if ( ! wp_check_password( $password, $user->user_pass, $user->ID ) ) {
+    error_log("Password Check failed");
+    return null;
+    }
+ 
+    error_log("Password ok");
+    return $user;
+
+/*
+ if ( ! wp_authenticatecheck_password( $password, $user->user_pass, $user->ID ) ) {
+    error_log("Password check for user " . $user->user_login . " and nickname " . $username .  " failed. Returning null");
     return null;
   }
+
+ error_log("Password matched for user " . $user->user_login . " and nickname " . $username  . " OK");
+*/
+ error_log("Result: " . print_r($user,true));
 
  return $user;
 
@@ -82,7 +116,7 @@ function check_nickname($user_id) {
 function init_nickname_login () {
     add_action('personal_options_update', 'check_nickname');
     add_action('edit_user_profile_update', 'check_nickname');
-    add_filter( 'authenticate', 'authenticate_nickname_password',  30, 3 );
+    add_filter( 'authenticate', 'authenticate_nickname_password',  19, 3 );
 }
 
 init_nickname_login();
