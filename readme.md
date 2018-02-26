@@ -21,7 +21,7 @@ Known Bugs:
 
   - The plugin will not check for existing duplicate nicknames on installation. 
   - If duplicate nicknames exist, the plugins refuses to use them for authentication
-  - The error message for not accepting duplicate nicknames is not translatable
+  - The error message for rejecting duplicate nickname updates is not translation-ready
 
 
 
