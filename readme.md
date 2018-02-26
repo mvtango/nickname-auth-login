@@ -15,12 +15,13 @@ Allow users to authenticate with their nicknames + passwords. THIS CAN BE A SECU
 ## Description 
 
 After activating this plugin, users can authenticate using their nickname and password. 
-Nicknames updates that result in duplicate nicknames will be refused after activation of the plugin.
+Nicknames updates through the Wordpress API that use the entry points  `personal_options_update` and `edit_user_profile_update` that would result in duplicate nicknames will be refused after activation of the plugin.
 
 Known Bugs: 
 
   - The plugin will not check for existing duplicate nicknames on installation. 
   - If duplicate nicknames exist, the plugins refuses to use them for authentication
+  - The error message for not accepting duplicate nicknames is not translatable
 
 
 
