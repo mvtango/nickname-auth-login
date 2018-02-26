@@ -14,8 +14,9 @@ Allow users to authenticate with their nicknames + passwords. THIS CAN BE A SECU
 
 ## Description 
 
-After activating this plugin, users can authenticate using their nickname and password. 
-Nicknames updates that result in duplicate nicknames will be refused after activation of the plugin.
+After activating this plugin, users can authenticate using their nickname and password as an alternative to username and password.
+. 
+Nicknames updates that would result in duplicate nicknames will be refused after activation of the plugin.
 
 Known Bugs: 
 
